@@ -1,14 +1,21 @@
 import { useGetDocumentsQuery } from '../api/documents.api';
 import { Document } from '../types/document/document.type';
+import { Meta } from '../types/meta/meta.type';
 import style from './Main.module.scss';
 
 function Main() {
-  const { data: documents } = useGetDocumentsQuery('') as { data: Document[] | undefined };
+  const { data } = useGetDocumentsQuery('') as {
+    data: {
+      documents: Document[];
+      meta: Meta;
+    };
+  };
 
-  if (!documents) {
+  if (!data) {
     return <></>;
   }
 
+  const documents: Document[] = data.documents ?? [];
   const noDocumentsAvailableMessage = <h1>No documents available</h1>;
 
   return (
@@ -16,7 +23,7 @@ function Main() {
       {documents.length ? (
         <div className={style['documents-list']}>
           {documents.map((document: Document) => (
-            <span>{document.id}</span>
+            <img key={document.id} src={document.img_thumbnail_url} alt='document-image' />
           ))}
         </div>
       ) : (

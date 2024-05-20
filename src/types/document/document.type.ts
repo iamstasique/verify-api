@@ -1,5 +1,5 @@
 import { CurrencyCode } from './currency-code.type';
-import { Meta } from '../meta/meta.type';
+import { DocumentMeta } from '../meta/meta.type';
 import { DocumentStatus } from './document-status.type';
 import { LineItem } from './line-item.type';
 import { Barcode } from '../barcode/barcode.type';
@@ -143,7 +143,7 @@ export type Document = {
    */
   warnings?: string[];
 
-  meta?: Meta;
+  meta?: DocumentMeta;
 
   /**
    * Possible values: non-empty.

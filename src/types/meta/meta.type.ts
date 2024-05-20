@@ -5,6 +5,13 @@ import { MetaSourceDocument } from './meta-source-document.type';
 import { MetaWarning } from './meta-warning.type';
 
 export type Meta = {
+  documents_per_page: number;
+  page_number: number;
+  total_pages: number;
+  total_results: number;
+};
+
+export type DocumentMeta = {
   /**
    * Possible values: non-empty.
    * The API username for the account that processed the document.
