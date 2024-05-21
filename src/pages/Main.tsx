@@ -1,4 +1,5 @@
 import { useGetDocumentsQuery } from '../api/documents.api';
+import DocumentForm from '../components/document-form/DocumentForm';
 import { Document } from '../types/document/document.type';
 import { Meta } from '../types/meta/meta.type';
 import style from './Main.module.scss';
@@ -19,17 +20,15 @@ function Main() {
   const noDocumentsAvailableMessage = <h1>No documents available</h1>;
 
   return (
-    <>
-      {documents.length ? (
-        <div className={style['documents-list']}>
-          {documents.map((document: Document) => (
-            <img key={document.id} src={document.img_thumbnail_url} alt='document-image' />
-          ))}
-        </div>
-      ) : (
-        noDocumentsAvailableMessage
-      )}
-    </>
+    <div className={style['main-page']}>
+      <div>
+        {documents.length
+          ? documents.map((document: Document) => <img key={document.id} src={document.img_thumbnail_url} alt='document-data' />)
+          : noDocumentsAvailableMessage}
+      </div>
+
+      <DocumentForm />
+    </div>
   );
 }
 
