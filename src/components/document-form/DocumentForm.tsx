@@ -47,30 +47,36 @@ function DocumentForm() {
   }, [isSuccess, isError, reset]);
 
   return (
-    <form className={style['form']}>
-      {alertContent && <Alert severity={alertContent.type}>{alertContent.message}</Alert>}
-
-      <h3 className={style['form-header']}>Document Form</h3>
-
-      {isLoading && (
-        <div className={style['form-loading-overlay']}>
-          <CircularProgress className={style['form-loader']} />
-        </div>
+    <>
+      {alertContent && (
+        <Alert className={style['alert']} severity={alertContent.type}>
+          {alertContent.message}
+        </Alert>
       )}
+      
+      <form className={style['form']}>
+        <h3 className={style['form-header']}>Document Form</h3>
 
-      <div className={style['form-inputs']}>
-        <DragDropFiles files={files} setFiles={setFiles} />
-      </div>
+        {isLoading && (
+          <div className={style['form-loading-overlay']}>
+            <CircularProgress className={style['form-loader']} />
+          </div>
+        )}
 
-      <div className={style['form-actions']}>
-        <Button onClick={() => onSave()} disabled={!files || isLoading} variant='outlined'>
-          Save
-        </Button>
-        <Button onClick={() => onReset()} disabled={!files || isLoading} color='error' variant='outlined'>
-          Reset
-        </Button>
-      </div>
-    </form>
+        <div className={style['form-inputs']}>
+          <DragDropFiles files={files} setFiles={setFiles} />
+        </div>
+
+        <div className={style['form-actions']}>
+          <Button onClick={() => onSave()} disabled={!files || isLoading} variant='outlined'>
+            Save
+          </Button>
+          <Button onClick={() => onReset()} disabled={!files || isLoading} color='error' variant='outlined'>
+            Reset
+          </Button>
+        </div>
+      </form>
+    </>
   );
 }
 
