@@ -1,0 +1,28 @@
+$input-color: rgba(25, 118, 210, 0.5);
+
+.dropzone {
+  height: 100px;
+  width: 100%;
+
+  border: 1px dashed $input-color;
+  box-sizing: border-box;
+
+  color: $input-color;
+
+  text-transform: uppercase;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &:hover {
+    border-color: #1976d2;
+    background-color: rgba(25, 118, 210, 0.04);
+  }
+}
+
+.selected-item-message {
+  font-size: large;
+  color: black;
+}

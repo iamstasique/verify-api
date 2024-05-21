@@ -1,0 +1,73 @@
+$form-padding: 50px;
+
+.form {
+  min-width: 450px;
+
+  margin: 20px;
+  padding: $form-padding;
+
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 1px 1px 8px 1px;
+  background-color: white;
+
+  // For overlay
+  position: relative;
+
+  .form-header {
+    color: #242424;
+    font-family: sans-serif;
+
+    text-align: left;
+  }
+
+  .form-loading-overlay {
+    height: 100%;
+    width: 100%;
+
+    background-color: black;
+
+    box-shadow: 1px 1px 8px 1px black;
+    border-radius: 12px;
+
+    opacity: 0.5;
+    position: absolute;
+    z-index: 999;
+    transform: translate(-$form-padding, -$form-padding);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 10px;
+  }
+
+  .form-actions {
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: row;
+
+    > button {
+      flex: 1;
+    }
+  }
+}
+
+.alert {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
