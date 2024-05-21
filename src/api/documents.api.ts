@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Urls } from './urls.enum';
+import { HttpMethods } from '../enums/http-methods.enum';
 import { BASE_URL } from './urls.constant';
+import { Urls } from './urls.enum';
 
 export const documentsApi = createApi({
   reducerPath: Urls.Documents,
@@ -18,7 +19,20 @@ export const documentsApi = createApi({
     getDocuments: builder.query({
       query: () => Urls.Documents,
     }),
+    sendDocument: builder.mutation({
+      query: (body: { file: File }) => {
+        const formData = new FormData();
+        formData.append('file', body.file);
+
+        return {
+          url: Urls.Documents,
+          method: HttpMethods.Post,
+          body: formData,
+        };
+      },
+      invalidatesTags: [Urls.Documents],
+    }),
   }),
 });
 
-export const { useGetDocumentsQuery } = documentsApi;
+export const { useGetDocumentsQuery, useSendDocumentMutation } = documentsApi;

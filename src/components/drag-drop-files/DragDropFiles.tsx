@@ -33,7 +33,7 @@ function DragDropFiles(props: { files: FileList | null; setFiles: any }) {
       {!props.files && (
         <div className={style['dropzone']} onDragOver={handleDrag} onDrop={handleDrop}>
           <span>
-            <b>Drag and Drop Files to Upload</b>
+            <b>Drag and Drop File to Upload</b>
           </span>
           <span>or</span>
 
@@ -46,7 +46,7 @@ function DragDropFiles(props: { files: FileList | null; setFiles: any }) {
           />
 
           <Button variant='outlined' onClick={() => inputRef.current?.click()}>
-            <b>Select Files</b>
+            <b>Select File</b>
           </Button>
         </div>
       )}
