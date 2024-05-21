@@ -1,12 +1,15 @@
-import { Button, CircularProgress } from '@mui/material';
-import style from './DocumentForm.module.scss';
-import DragDropFiles from '../drag-drop-files/DragDropFiles';
+import { Alert, Button, CircularProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useSendDocumentMutation } from '../../api/documents.api';
+import { AlertTypes } from '../../enums/alert-types.enum';
+import { AlertContent } from '../../types/alert-content.type';
+import DragDropFiles from '../drag-drop-files/DragDropFiles';
+import style from './DocumentForm.module.scss';
 
 function DocumentForm() {
   const [files, setFiles] = useState(null);
   const [sendDocument, { isLoading, isSuccess, isError, reset }] = useSendDocumentMutation();
+  const [alertContent, setAlertContent] = useState<AlertContent | null>(null);
 
   const onSave = () => {
     if (!files) {
@@ -22,14 +25,31 @@ function DocumentForm() {
   };
 
   useEffect(() => {
+    const showAlert = () => {
+      const alert: AlertContent = {
+        type: isSuccess ? AlertTypes.Success : AlertTypes.Error,
+        message: isSuccess ? 'Your document has been sent' : 'Something went wrong',
+      };
+
+      const timeout = setTimeout(() => {
+        setAlertContent(null);
+        clearTimeout(timeout);
+      }, 3000);
+
+      setAlertContent(alert);
+    };
+
     if (isSuccess || isError) {
       reset();
       onReset();
+      showAlert();
     }
   }, [isSuccess, isError, reset]);
 
   return (
     <form className={style['form']}>
+      {alertContent && <Alert severity={alertContent.type}>{alertContent.message}</Alert>}
+
       <h3 className={style['form-header']}>Document Form</h3>
 
       {isLoading && (
