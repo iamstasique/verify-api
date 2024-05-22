@@ -4,10 +4,10 @@ $input-color: rgba(25, 118, 210, 0.5);
   height: 100px;
   width: 100%;
 
-  border: 1px dashed $input-color;
+  border: 1px dashed white;
   box-sizing: border-box;
 
-  color: $input-color;
+  color: white;
 
   text-transform: uppercase;
 
@@ -24,5 +24,5 @@ $input-color: rgba(25, 118, 210, 0.5);
 
 .selected-item-message {
   font-size: large;
-  color: black;
+  color: white;
 }

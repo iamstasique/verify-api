@@ -68,10 +68,10 @@ function DocumentForm() {
         </div>
 
         <div className={style['form-actions']}>
-          <Button onClick={() => onSave()} disabled={!files || isLoading} variant='outlined'>
+          <Button onClick={() => onSave()} disabled={!files || isLoading} variant='contained'>
             Save
           </Button>
-          <Button onClick={() => onReset()} disabled={!files || isLoading} color='error' variant='outlined'>
+          <Button onClick={() => onReset()} disabled={!files || isLoading} color='error' variant='contained'>
             Reset
           </Button>
         </div>
