@@ -21,7 +21,9 @@ function DocumentCard({ document }: { document: Document }) {
       return `0 ${document.currency_code}`;
     }
 
-    return `${item.quantity * item.price} ${document.currency_code}`;
+    const totalPrice = +(item.quantity * item.price).toFixed(2);
+
+    return `${totalPrice} ${document.currency_code}`;
   };
 
   const getDocumentTitle = () => document.document_title ?? 'receipt';
@@ -33,6 +35,8 @@ function DocumentCard({ document }: { document: Document }) {
     if (document.line_items && document.line_items.length > 0) {
       totalPrice = document.line_items.reduce((acc, curr) => (acc += curr.price * curr.quantity), 0);
     }
+
+    totalPrice = +totalPrice.toFixed(2);
 
     return `${totalPrice} ${document.currency_code}`;
   };
