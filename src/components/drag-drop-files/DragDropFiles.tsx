@@ -45,7 +45,7 @@ function DragDropFiles(props: { files: FileList | null; setFiles: any }) {
             ref={inputRef}
           />
 
-          <Button variant='outlined' onClick={() => inputRef.current?.click()}>
+          <Button variant='contained' onClick={() => inputRef.current?.click()}>
             <b>Select File</b>
           </Button>
         </div>

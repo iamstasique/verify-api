@@ -1,5 +1,6 @@
 import { useGetDocumentsQuery } from '../api/documents.api';
 import DocumentForm from '../components/document-form/DocumentForm';
+import DocumentsList from '../components/documents-list/DocumentsList';
 import { Document } from '../types/document/document.type';
 import { Meta } from '../types/meta/meta.type';
 import style from './Main.module.scss';
@@ -21,11 +22,7 @@ function Main() {
 
   return (
     <div className={style['main-page']}>
-      <div>
-        {documents.length
-          ? documents.map((document: Document) => <img key={document.id} src={document.img_thumbnail_url} alt='document-data' />)
-          : noDocumentsAvailableMessage}
-      </div>
+      <div className={style['main-page-list']}>{documents.length ? <DocumentsList documents={documents} /> : noDocumentsAvailableMessage}</div>
 
       <DocumentForm />
     </div>

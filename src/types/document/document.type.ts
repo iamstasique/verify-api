@@ -31,7 +31,9 @@ export type Document = {
   /**
    * The date and time the invoice or receipt was first submitted and processed in ISO 8601 format.
    */
-  created_date?: Date;
+  created_date?: string;
+
+  date?: string;
 
   custom_fields?: Object;
 
@@ -39,6 +41,8 @@ export type Document = {
    * The ID of the first unique Document. This Document has been identified as a duplicate of another Document.
    */
   duplicate_of?: number;
+
+  document_title?: string;
 
   /**
    * The exchange rate is calculated by dividing the amount of the currency found on the document by your account's default currency.
