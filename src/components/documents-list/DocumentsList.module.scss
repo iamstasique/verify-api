@@ -1,0 +1,9 @@
+.documents-list {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  max-height: 98vh;
+  overflow-y: scroll;
+}
