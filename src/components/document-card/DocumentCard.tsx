@@ -44,6 +44,8 @@ function DocumentCard({ document }: { document: Document }) {
       totalDiscount = document.line_items.reduce((acc, curr) => (acc += curr.discount * curr.quantity), 0);
     }
 
+    totalDiscount = +totalDiscount.toFixed(2);
+
     return `${totalDiscount} ${document.currency_code}`;
   };
 
